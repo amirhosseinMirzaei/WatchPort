@@ -7,6 +7,28 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
 }
+.favorite-btn {
+  position: absolute;
+  top: 10px;     /* فاصله از بالا */
+  right: 10px;   /* فاصله از راست */
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: gray;
+  transition: color 0.3s ease;
+}
+
+.favorite-btn.active {
+  color: red;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.2);
+}
+
+
+
 
 /* افکت شناور روی کارت */
 .source-card:hover {

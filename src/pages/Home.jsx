@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getSources } from "../services/api";
 import { SourcesList } from "../components/SourcesList.jsx";
 import "../App.css";
-export const Home = () => {
+export const Home = ({ favorites, toggleFavorite }) => {
   const [sources, setSources] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -31,5 +31,11 @@ export const Home = () => {
     );
   }
 
-  return <SourcesList sources={sources} />;
+  return (
+    <SourcesList
+      sources={sources}
+      favorites={favorites}
+      toggleFavorite={toggleFavorite}
+    />
+  );
 };
