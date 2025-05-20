@@ -1,0 +1,97 @@
+.carousel-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 300px;
+  position: relative;
+}
+
+.carousel-item {
+  position: absolute;
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: scale(0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel-item img {
+  border-radius: 12px;
+  width: 180px;
+  height: 240px; /* قبلاً 270 بود */
+  object-fit: cover;
+}
+
+.carousel-item.center {
+  opacity: 1;
+  transform: scale(1.1) translateX(0);
+  z-index: 2;
+}
+
+.carousel-item.left {
+  opacity: 0.6;
+  transform: scale(0.9) translateX(-160px);
+  z-index: 1;
+}
+
+.carousel-item.right {
+  opacity: 0.6;
+  transform: scale(0.9) translateX(160px);
+  z-index: 1;
+}
+
+.carousel-item.hidden {
+  opacity: 0;
+  transform: scale(0.8) translateX(0);
+  z-index: 0;
+}
+.carousel-title-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.results-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.results-list li {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.results-list li:last-child {
+  border-bottom: none;
+}
+
+.results-list li:hover {
+  background-color: #e0f7fa; /* رنگ آبی روشن، میتونی با تم خودت تغییر بدی */
+}
+
+.results-list img {
+  border-radius: 6px;
+  width: 50px;
+  height: 75px;
+  object-fit: cover;
+  margin-right: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}

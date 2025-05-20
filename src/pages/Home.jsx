@@ -1,10 +1,12 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getSources } from "../services/api";
 import { SourcesList } from "../components/SourcesList.jsx";
 import "../App.css";
+
 export const Home = ({ favorites, toggleFavorite }) => {
   const [sources, setSources] = useState([]);
+  const [filteredSources, setFilteredSources] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -12,8 +14,8 @@ export const Home = ({ favorites, toggleFavorite }) => {
     const loadSources = async () => {
       try {
         const responseSource = await getSources();
-        console.log("Fetched sources:", responseSource);
         setSources(responseSource);
+        setFilteredSources(responseSource);
       } catch (e) {
         setError("Failed to load movies...");
       } finally {
@@ -22,6 +24,17 @@ export const Home = ({ favorites, toggleFavorite }) => {
     };
     loadSources();
   }, []);
+
+  useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setFilteredSources(sources);
+    } else {
+      const filtered = sources.filter((source) =>
+        source.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredSources(filtered);
+    }
+  }, [searchQuery, sources]);
 
   if (loading) {
     return (
@@ -32,10 +45,20 @@ export const Home = ({ favorites, toggleFavorite }) => {
   }
 
   return (
-    <SourcesList
-      sources={sources}
-      favorites={favorites}
-      toggleFavorite={toggleFavorite}
-    />
+    <>
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search movies..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+      <SourcesList
+        sources={filteredSources}
+        favorites={favorites}
+        toggleFavorite={toggleFavorite}
+      />
+    </>
   );
 };

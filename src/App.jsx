@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar";
 import { useState } from "react";
 import { Route, Router, Routes } from "react-router-dom";
 import Favorites from "./pages/Favorites";
+import { Title } from "./pages/Title";
 import About from "./pages/About";
 function App() {
   const [favorites, setFavorites] = useState([]);
@@ -36,6 +37,7 @@ function App() {
             }
           />
           <Route path="/AboutMe" element={<About />} />
+          <Route path="/title" element={<Title />} />
         </Routes>
       </div>
     </>
