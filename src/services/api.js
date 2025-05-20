@@ -1,4 +1,4 @@
-import js from "@eslint/js";
+
 
 const BASE_URL="https://api.watchmode.com/v1/"
 const apiKey="mOtPAzb8xxboyECzzhn7AQV2IwAkTG1627UvA7fP"
@@ -16,3 +16,7 @@ export const getSources = async () => {
 
   return json;
 };
+
+
+
+

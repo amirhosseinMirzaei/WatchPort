@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/Navbar.css";
 import { NavLink } from "react-router-dom";
+import About from "../pages/About";
 
 export const Navbar = () => {
   return (
@@ -21,15 +22,23 @@ export const Navbar = () => {
             to="/favorites"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            favorites
+            Favorites
           </NavLink>{" "}
         </li>
         <li>
           <NavLink
-            to="/about"
+            to="/aboutMe"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            about me
+            About me
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/title"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Title
           </NavLink>
         </li>
       </ul>

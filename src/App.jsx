@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar";
 import { useState } from "react";
 import { Route, Router, Routes } from "react-router-dom";
 import Favorites from "./pages/Favorites";
+import About from "./pages/About";
 function App() {
   const [favorites, setFavorites] = useState([]);
   const toggleFavorite = (source) => {
@@ -34,6 +35,7 @@ function App() {
               />
             }
           />
+          <Route path="/AboutMe" element={<About />} />
         </Routes>
       </div>
     </>

@@ -1,0 +1,32 @@
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  direction: ltr;
+  text-align: left;
+}
+
+.about-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #4caf50;
+}
+
+.about-text {
+  max-width: 600px;
+}
+
+.about-text h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.about-text p {
+  line-height: 1.8;
+  color: #555;
+}
