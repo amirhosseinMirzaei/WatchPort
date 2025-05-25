@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { autocompleteSearch } from "../services/api";
+import { useNavigate } from "react-router-dom";
+
 import "../css/Title.css";
 
 export const Title = () => {
@@ -31,6 +33,7 @@ export const Title = () => {
     setLoading(true);
     try {
       const data = await autocompleteSearch("game"); // یا هر کلمه‌ای که چندتا آیتم برگردونه
+      console.log(data);
       setInitialItems(data.slice(0, 40)); // فرضاً ۵ آیتم اول
     } catch (e) {
       setError("خطا در دریافت داده‌های اولیه");
@@ -52,6 +55,7 @@ export const Title = () => {
     return () => clearInterval(interval); // Cleanup هنگام خروج از کامپوننت
   }, [initialItems]);
 
+  const navigate = useNavigate();
   return (
     <div className="external-container">
       <div className="carousel-wrapper">
@@ -67,7 +71,7 @@ export const Title = () => {
               : "hidden";
 
           return (
-            <div key={item.id} className={`carousel-item ${position}`}>
+            <div key={item.id} className={`my-carousel-item ${position}`}>
               <div className="carousel-image-container">
                 <img src={item.image_url} alt={item.name} />
                 <div className="carousel-item-name">{item.name}</div>
@@ -88,12 +92,19 @@ export const Title = () => {
         />
       </div>
 
-      {loading && <p>در حال جستجو...</p>}
+      {loading && <p>loading ...</p>}
       {error && <p className="error-message">{error}</p>}
 
       <ul className="results-list">
         {results.map((item) => (
-          <li key={item.id}>
+          <li
+            key={item.id}
+            onClick={() => {
+              const combinedId = `${item.tmdb_type}-${item.tmdb_id}`;
+              console.log("Sending ID to API:", combinedId);
+              navigate(`/details/${combinedId}`);
+            }}
+          >
             <img
               src={item.image_url}
               alt={item.name}

@@ -59,5 +59,18 @@ export async function autocompleteSearch(searchValue, searchType = 1) {
   }}
 
 
+ 
+  
+  export const GetDetail = async (titleId)  => {
+   
+ const url= `${BASE_URL}title/${titleId}/details/?apiKey=${apiKey}`;
+ const response = await fetch(url);
+ const json = await response.json();
+ return json;
+
+  }
+  
+
+
 
 

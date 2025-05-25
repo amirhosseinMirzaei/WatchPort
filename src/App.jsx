@@ -5,7 +5,10 @@ import { useState } from "react";
 import { Route, Router, Routes } from "react-router-dom";
 import Favorites from "./pages/Favorites";
 import { Title } from "./pages/Title";
+import DetailsPage from "./pages/DetailsPage";
 import About from "./pages/About";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 function App() {
   const [favorites, setFavorites] = useState([]);
   const toggleFavorite = (source) => {
@@ -38,6 +41,7 @@ function App() {
           />
           <Route path="/AboutMe" element={<About />} />
           <Route path="/title" element={<Title />} />
+          <Route path="/details/:tmdbId" element={<DetailsPage />} />
         </Routes>
       </div>
     </>
