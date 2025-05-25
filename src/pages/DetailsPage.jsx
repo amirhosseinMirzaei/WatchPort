@@ -1,6 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { GetDetail } from "../services/api";
+import {
+  FaImdb,
+  FaClock,
+  FaLanguage,
+  FaTv,
+  FaStar,
+  FaFilm,
+} from "react-icons/fa";
+import { GiTomato } from "react-icons/gi";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Detail.css";
 
@@ -31,9 +40,9 @@ function DetailsPage() {
         className="position-relative rounded-3 mb-4"
         style={{
           backgroundImage: `url(${details.backdrop})`,
-          backgroundSize: "contain",
+          backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "400px",
+          height: "450px",
         }}
       >
         {/* Poster */}
@@ -64,25 +73,46 @@ function DetailsPage() {
 
         <div className="row mb-3">
           <div className="col-md-6 col-lg-4 mb-2">
-            <strong>Genre:</strong> {details.genre_names?.join(", ")}
+            <strong>
+              <FaFilm className="me-1 text-secondary" /> Genre:
+            </strong>{" "}
+            {details.genre_names?.join(", ")}
           </div>
           <div className="col-md-6 col-lg-4 mb-2">
-            <strong>Rating:</strong> {details.user_rating}/10
+            <strong>
+              <FaStar className="me-1 text-warning" /> Rating:
+            </strong>{" "}
+            {details.user_rating}/10
           </div>
           <div className="col-md-6 col-lg-4 mb-2">
-            <strong>Critic Score:</strong> {details.critic_score}%
+            <strong>
+              <GiTomato className="me-1 text-danger" /> Critic Score:
+            </strong>{" "}
+            {details.critic_score}%
           </div>
           <div className="col-md-6 col-lg-4 mb-2">
-            <strong>Runtime:</strong> {details.runtime_minutes} min
+            <strong>
+              <FaClock className="me-1 text-primary" /> Runtime:
+            </strong>{" "}
+            {details.runtime_minutes} min
           </div>
           <div className="col-md-6 col-lg-4 mb-2">
-            <strong>Language:</strong> {details.original_language}
+            <strong>
+              <FaLanguage className="me-1 text-muted" /> Language:
+            </strong>{" "}
+            {details.original_language?.toUpperCase()}
           </div>
           <div className="col-md-6 col-lg-4 mb-2">
-            <strong>Network:</strong> {details.network_names?.join(", ")}
+            <strong>
+              <FaTv className="me-1 text-info" /> Network:
+            </strong>{" "}
+            {details.network_names?.join(", ")}
           </div>
           <div className="col-md-6 col-lg-4 mb-2">
-            <strong>US Rating:</strong> {details.us_rating}
+            <strong>
+              <FaImdb className="me-1 text-warning" /> US Rating:
+            </strong>{" "}
+            {details.us_rating}
           </div>
         </div>
 
